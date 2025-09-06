@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Resume{% endblock %}
+
+{% block content %}
+    <h1>My Resume</h1>
+    <p>You can download my resume <a href="{{ url_for('static', filename='resume.pdf') }}">here</a>.</p>
+{% endblock %}

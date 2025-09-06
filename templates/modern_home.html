@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.personal_info.name }} - Portfolio</title>
+    <meta name="description" content="Professional Web Designer and Developer - {{ data.personal_info.name }}">
+    <meta name="keywords" content="web designer, developer, video editor, portfolio, Sri Lanka">
+    <meta name="author" content="{{ data.personal_info.name }}">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="{{ data.personal_info.name }} - Portfolio">
+    <meta property="og:description" content="Professional Web Designer and Developer Portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ url_for('static', filename='images/profile.jpg') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo">
+                    <span>{{ data.personal_info.name.split()[0] }}</span> {{ data.personal_info.name.split()[1] }}
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="animate-slide-up">
+                        Hi, I'm <span class="text-gradient">{{ data.personal_info.name.split()[0] }}</span>
+                    </h1>
+                    <p class="subtitle animate-slide-up stagger-1">
+                        I'm a <span class="typing-text">{{ data.personal_info.title }}</span>
+                    </p>
+                    <p class="description animate-slide-up stagger-2">
+                        {{ data.personal_info.bio }}
+                    </p>
+                    <div class="btn-group animate-slide-up stagger-3">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                        <a href="{{ url_for('static', filename='files/' + data.personal_info.cv_file) }}" class="btn btn-secondary" download>
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image animate-slide-right">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="{{ data.personal_info.name }}" class="hover-lift">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image scroll-reveal-left">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="About {{ data.personal_info.name }}" class="hover-lift">
+                </div>
+                <div class="about-text scroll-reveal-right">
+                    <h3>{{ data.personal_info.title }}</h3>
+                    <p>{{ data.personal_info.bio }}</p>
+                    <p>
+                        I have experience working with various technologies and frameworks, always staying up-to-date 
+                        with the latest industry trends and best practices. My approach combines creativity with 
+                        technical expertise to deliver outstanding results.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <strong>Location:</strong><br>
+                                {{ data.personal_info.location }}
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <strong>Email:</strong><br>
+                                {{ data.personal_info.email }}
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <strong>Phone:</strong><br>
+                                {{ data.personal_info.phone }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section" style="background: var(--surface-color);">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                {% for skill in data.skills %}
+                <div class="skill-item scroll-reveal{% if loop.index0 > 0 %} stagger-{{ loop.index0 }}{% endif %}">
+                    <div class="skill-header">
+                        <i class="{{ skill.icon }} skill-icon"></i>
+                        <div>
+                            <div class="skill-name">{{ skill.name }}</div>
+                            <div class="skill-level">{{ skill.level }}%</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percentage="{{ skill.level }}"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <!-- Project Filters -->
+            <div class="project-filters text-center mb-5">
+                <button class="btn btn-secondary filter-btn active" data-filter="all">All Projects</button>
+                <button class="btn btn-secondary filter-btn" data-filter="web-design">Web Design</button>
+                <button class="btn btn-secondary filter-btn" data-filter="web-app">Web Apps</button>
+                <button class="btn btn-secondary filter-btn" data-filter="video">Video</button>
+            </div>
+            
+            <div class="projects-grid">
+                {% for project in data.projects %}
+                <div class="project-card scroll-reveal{% if loop.index0 > 0 %} stagger-{{ loop.index0 }}{% endif %}" data-category="{{ project.category }}">
+                    <div class="project-image">
+                        <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}">
+                        <div class="project-overlay">
+                            <a href="{{ project.demo_link }}" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Live
+                            </a>
+                            <a href="{{ project.github_link }}" class="btn btn-secondary">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        <p class="project-description">{{ project.description }}</p>
+                        <div class="project-tech">
+                            {% for tech in project.technologies %}
+                            <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section" style="background: var(--surface-color);">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-stats grid grid-cols-3">
+                <div class="stat-card text-center scroll-reveal">
+                    <div class="stat-number">{{ data.experience.websites }}+</div>
+                    <div class="stat-label">Complete Websites</div>
+                </div>
+                <div class="stat-card text-center scroll-reveal stagger-1">
+                    <div class="stat-number">{{ data.experience.landing_pages }}+</div>
+                    <div class="stat-label">Landing Pages</div>
+                </div>
+                <div class="stat-card text-center scroll-reveal stagger-2">
+                    <div class="stat-number">{{ data.experience.clients }}+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info scroll-reveal-left">
+                    <h3>Let's Work Together</h3>
+                    <p>
+                        I'm always excited to take on new projects and collaborate with amazing people. 
+                        Whether you need a website, web application, or video editing services, I'm here to help.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>{{ data.personal_info.location }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>{{ data.personal_info.phone }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>{{ data.personal_info.email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container scroll-reveal-right">
+                    <form id="contact-form" class="contact-form" name="submit-to-google-sheet">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name *</label>
+                            <input type="text" id="name" name="Name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" id="email" name="Email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="Subject" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="Message" class="form-input form-textarea" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>{{ data.personal_info.name }}</h4>
+                    <p>{{ data.personal_info.title }}</p>
+                    <p>Creating amazing digital experiences since 2020</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p>Web Design</p>
+                    <p>Web Development</p>
+                    <p>Video Editing</p>
+                    <p>UI/UX Design</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>{{ data.personal_info.email }}</p>
+                    <p>{{ data.personal_info.phone }}</p>
+                    <p>{{ data.personal_info.location.split(',')[-1].strip() }}</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; {{ current_year }} {{ data.personal_info.name }}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="btn btn-primary">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Google Sheets Form Script -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbztYP0AEr01wFORBLYs-Y9Sh5wyX2cYEqsF8VG2Ca60c7zlnQGToiNU__Fx_KN9nV3AoQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    if (window.portfolioJS) {
+                        portfolioJS.showNotification('Message sent successfully!', 'success');
+                    }
+                    form.reset()
+                })
+                .catch(error => {
+                    if (window.portfolioJS) {
+                        portfolioJS.showNotification('Failed to send message. Please try again.', 'error');
+                    }
+                    console.error('Error!', error.message)
+                })
+        })
+    </script>
+</body>
+</html>

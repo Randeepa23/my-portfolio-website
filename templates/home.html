@@ -1,0 +1,446 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ data.personal_info.name }} - {{ data.personal_info.title }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero modern-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-grid modern-grid">
+                <div class="hero-image modern-image" data-aos="fade-right">
+                    <div class="image-container modern-container">
+                        <div class="image-frame">
+                            <div class="image-glow"></div>
+                            <img src="{{ url_for('static', filename='images/ChatGPT Image Jul 19, 2025, 08_14_10 PM.png') }}" alt="Professional Developer" class="profile-image modern-profile">
+                            <div class="image-border"></div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-icon floating-icon-1" data-aos="zoom-in" data-aos-delay="500">
+                                <i class="fab fa-html5"></i>
+                                <span class="icon-tooltip">HTML5</span>
+                            </div>
+                            <div class="floating-icon floating-icon-2" data-aos="zoom-in" data-aos-delay="700">
+                                <i class="fab fa-css3-alt"></i>
+                                <span class="icon-tooltip">CSS3</span>
+                            </div>
+                            <div class="floating-icon floating-icon-3" data-aos="zoom-in" data-aos-delay="900">
+                                <i class="fab fa-js-square"></i>
+                                <span class="icon-tooltip">JavaScript</span>
+                            </div>
+                            <div class="floating-icon floating-icon-4" data-aos="zoom-in" data-aos-delay="1100">
+                                <i class="fab fa-react"></i>
+                                <span class="icon-tooltip">React</span>
+                            </div>
+                            <div class="floating-icon floating-icon-5" data-aos="zoom-in" data-aos-delay="1300">
+                                <i class="fab fa-python"></i>
+                                <span class="icon-tooltip">Python</span>
+                            </div>
+                            <div class="floating-icon floating-icon-6" data-aos="zoom-in" data-aos-delay="1500">
+                                <i class="fab fa-node-js"></i>
+                                <span class="icon-tooltip">Node.js</span>
+                            </div>
+                        </div>
+                        <div class="particles">
+                            <div class="particle particle-1"></div>
+                            <div class="particle particle-2"></div>
+                            <div class="particle particle-3"></div>
+                            <div class="particle particle-4"></div>
+                            <div class="particle particle-5"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-text modern-text" data-aos="fade-left">
+                    <div class="hero-intro modern-intro">
+                        <div class="greeting-wrapper">
+                            <h1 class="hero-greeting">Hey I'm <span class="name-highlight">Randeepa</span></h1>
+                            <div class="typing-effect">
+                                <h2 class="hero-title">I'm a <span class="role-highlight typing-text">Web Designer & Developer</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="hero-description modern-description">
+                        {{ data.personal_info.bio }}
+                    </p>
+                    
+                    <div class="hero-actions modern-actions">
+                        <div class="social-links modern-social">
+                            <a href="https://github.com/Randeepa23" class="social-link modern-social-link" title="GitHub" data-aos="zoom-in" data-aos-delay="200" target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span class="social-tooltip">GitHub</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/randeepa-ariyawansa-a589a6265/" class="social-link modern-social-link" title="LinkedIn" data-aos="zoom-in" data-aos-delay="300" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                                <span class="social-tooltip">LinkedIn</span>
+                            </a>
+                            <a href="https://x.com/Ariyawansa61892" class="social-link modern-social-link" title="Twitter" data-aos="zoom-in" data-aos-delay="400" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                                <span class="social-tooltip">Twitter</span>
+                            </a>
+                            <a href="https://www.instagram.com/randeeeepa?igsh=MWk1NjBtazZ5ZWkxeA%3D%3D&utm_source=qr" class="social-link modern-social-link" title="Instagram" data-aos="zoom-in" data-aos-delay="500" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                                <span class="social-tooltip">Instagram</span>
+                            </a>
+                        </div>
+                        
+                        <div class="hero-buttons modern-buttons">
+                            <a href="{{ url_for('static', filename='files/' + data.personal_info.cv_file) }}" class="btn btn-primary modern-btn btn-glow" download data-aos="fade-up" data-aos-delay="600">
+                                <i class="fas fa-download"></i> Download CV
+                                <div class="btn-shine"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="scroll-indicator modern-scroll">
+        <div class="scroll-arrow">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Get to know more about my background and skills</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-grid">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Professional Web Designer & Developer</h3>
+                    <p>
+                        {{ data.personal_info.bio }} As a part-time freelancer, I've had the 
+                        opportunity to work with diverse clients and deliver projects that exceed expectations.
+                    </p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Frontend Technologies</h4>
+                            <ul class="skill-list">
+                                {% for skill in data.skills[:4] %}
+                                <li><i class="{{ skill.icon }}"></i> {{ skill.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Design & Tools</h4>
+                            <ul class="skill-list">
+                                {% for skill in data.skills[4:] %}
+                                <li><i class="{{ skill.icon }}"></i> {{ skill.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="about-actions">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=randeepaariyawansa324@gmail.com&su=Hire%20Request%20-%20Portfolio&body=Hello%20Randeepa,%0A%0AI%20am%20interested%20in%20hiring%20you%20for%20a%20project.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0AThank%20you!" target="_blank" class="btn btn-primary">Hire Me</a>
+                        <a href="{{ url_for('about') }}" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="about-visual" data-aos="fade-left">
+                    <div class="about-image">
+                        <img src="{{ url_for('static', filename='images/about-image.jpg') }}" alt="About {{ data.personal_info.name }}">
+                    </div>
+                    
+                    <div class="color-palette">
+                        <h4>Brand Colors</h4>
+                        <div class="color-swatches">
+                            <div class="color-swatch" style="background: #007bff" title="Primary Blue"></div>
+                            <div class="color-swatch" style="background: #28a745" title="Success Green"></div>
+                            <div class="color-swatch" style="background: #ffc107" title="Warning Yellow"></div>
+                            <div class="color-swatch" style="background: #dc3545" title="Danger Red"></div>
+                            <div class="color-swatch" style="background: #6f42c1" title="Purple"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Take a look at some of my recent work</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            {% for project in data.projects %}
+            <div class="portfolio-item" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="portfolio-image">
+                    <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-actions">
+                            <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description[:100] }}...</p>
+                    <div class="portfolio-tech">
+                        {% for tech in project.technologies %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center" data-aos="fade-up">
+            <a href="{{ url_for('projects') }}" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">What I Do</h2>
+            <p class="section-subtitle">Services I offer to help your business grow</p>
+        </div>
+        
+        <div class="services-grid">
+            {% for service in data.services %}
+            <div class="service-item" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="service-icon">
+                    <i class="{{ service.icon }}"></i>
+                </div>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Experience & Achievements</h2>
+            <p class="section-subtitle">Numbers that speak for themselves</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="stat-number" data-target="{{ data.stats.websites_completed }}">0</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-number" data-target="{{ data.stats.landing_pages }}">0</div>
+                <div class="stat-label">Landing Pages</div>
+            </div>
+            
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" data-target="{{ data.stats.happy_clients }}">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="stat-number" data-target="{{ data.stats.years_experience }}">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to start your project? Let's discuss your needs</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Location</h4>
+                        <p>{{ data.personal_info.location }}</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>{{ data.personal_info.phone }}</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>{{ data.personal_info.email }}</p>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/Randeepa23" class="social-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/randeepa-ariyawansa-a589a6265/" class="social-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/Ariyawansa61892" class="social-link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/randeeeepa?igsh=MWk1NjBtazZ5ZWkxeA%3D%3D&utm_source=qr" class="social-link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form" data-aos="fade-left">
+                <div class="cta-text">
+                    <h3>Ready to Work Together?</h3>
+                    <p>Let's create something amazing together. I'm available for freelance projects and full-time opportunities.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary">Start a Project</a>
+                    <a href="{{ url_for('static', filename='files/' + data.personal_info.cv_file) }}" class="btn btn-outline" download>
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.services {
+    background: var(--light-color);
+    padding: var(--spacing-xxl) 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.service-item {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal);
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.service-item h3 {
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-item p {
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+.cta-text {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.cta-text h3 {
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.cta-buttons .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cta-buttons .btn-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+}
+
+.cta-buttons .btn-outline {
+    background: transparent;
+    color: #6366f1;
+    border: 2px solid #6366f1;
+}
+
+.cta-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.text-center {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

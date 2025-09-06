@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<section class="section services-section" id="services">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">My Services</h2>
+            <p class="section-subtitle">What I can do for you</p>
+        </div>
+        
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                <div class="service-icon">
+                    <i class="{{ service.icon }}"></i>
+                </div>
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="cta-wrapper">
+            <p class="cta-text">Interested in working together?</p>
+            <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Let's Talk</a>
+        </div>
+    </div>
+</section>
+
+<section class="section process-section bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">My Process</h2>
+            <p class="section-subtitle">How I approach projects</p>
+        </div>
+        
+        <div class="process-timeline">
+            <div class="process-step" data-aos="fade-right">
+                <div class="process-number">01</div>
+                <h3 class="process-title">Discovery</h3>
+                <p class="process-description">I begin by understanding your needs, goals, target audience, and project scope to establish clear objectives.</p>
+            </div>
+            
+            <div class="process-step" data-aos="fade-left">
+                <div class="process-number">02</div>
+                <h3 class="process-title">Planning</h3>
+                <p class="process-description">Creating a detailed project plan with timelines, milestones, and deliverables to keep everything on track.</p>
+            </div>
+            
+            <div class="process-step" data-aos="fade-right">
+                <div class="process-number">03</div>
+                <h3 class="process-title">Design</h3>
+                <p class="process-description">Crafting wireframes and visual designs that align with your brand and create a compelling user experience.</p>
+            </div>
+            
+            <div class="process-step" data-aos="fade-left">
+                <div class="process-number">04</div>
+                <h3 class="process-title">Development</h3>
+                <p class="process-description">Building the project with clean, efficient code that follows best practices for performance and maintainability.</p>
+            </div>
+            
+            <div class="process-step" data-aos="fade-right">
+                <div class="process-number">05</div>
+                <h3 class="process-title">Testing</h3>
+                <p class="process-description">Rigorous testing across devices and browsers to ensure everything works flawlessly for your users.</p>
+            </div>
+            
+            <div class="process-step" data-aos="fade-left">
+                <div class="process-number">06</div>
+                <h3 class="process-title">Launch & Support</h3>
+                <p class="process-description">Deploying the final product and providing ongoing support and maintenance to keep everything running smoothly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section testimonials-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="section-subtitle">What people say about my work</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-item">
+                <div class="testimonial-content">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>{{ testimonial.content }}</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="{{ url_for('static', filename='images/' + testimonial.image) }}" alt="{{ testimonial.name }}" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">{{ testimonial.name }}</h4>
+                            <p class="testimonial-position">{{ testimonial.position }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section cta-section bg-primary">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to start your project?</h2>
+            <p class="cta-description">Get in touch today and let's create something amazing together!</p>
+            <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Contact Me</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize testimonial slider if needed
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        if (testimonialSlider && typeof Glide !== 'undefined') {
+            new Glide('.testimonial-slider', {
+                type: 'carousel',
+                perView: 1,
+                focusAt: 'center',
+                gap: 32,
+                autoplay: 5000,
+                animationDuration: 700,
+                animationTimingFunc: 'ease-in-out'
+            }).mount();
+        }
+    });
+</script>
+{% endblock %}

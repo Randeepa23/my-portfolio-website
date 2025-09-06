@@ -1,0 +1,585 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="project-hero">
+    <div class="hero-background">
+        <div class="hero-overlay"></div>
+        <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="hero-bg-image">
+    </div>
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <div class="breadcrumb">
+                <a href="{{ url_for('home') }}">Home</a>
+                <span>/</span>
+                <a href="{{ url_for('projects') }}">Projects</a>
+                <span>/</span>
+                <span>{{ project.title }}</span>
+            </div>
+            <h1 class="project-title">{{ project.title }}</h1>
+            <p class="project-subtitle">{{ project.description[:150] }}...</p>
+            <div class="project-meta-hero">
+                <div class="meta-item">
+                    <i class="fas fa-tag"></i>
+                    <span>{{ project.category.replace('-', ' ').title() }}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-code"></i>
+                    <span>{{ project.technologies|length }} Technologies</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Overview -->
+<section class="project-overview">
+    <div class="container">
+        <div class="overview-grid">
+            <div class="overview-content" data-aos="fade-right">
+                <h2>Project Overview</h2>
+                <p class="lead">{{ project.description }}</p>
+                
+                <div class="project-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Objective</h4>
+                            <p>Create a comprehensive digital solution that enhances user experience and drives business growth.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Approach</h4>
+                            <p>Modern design principles combined with cutting-edge technology for optimal performance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Result</h4>
+                            <p>A visually stunning and highly functional solution that exceeds client expectations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overview-image" data-aos="fade-left">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Used -->
+<section class="project-technologies">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Technologies Used</h2>
+            <p>Cutting-edge tools and frameworks that power this project</p>
+        </div>
+        
+        <div class="tech-grid" data-aos="fade-up" data-aos-delay="100">
+            {% for tech in project.technologies %}
+            <div class="tech-card">
+                <div class="tech-icon">
+                    {% if tech == 'HTML5' %}
+                        <i class="fab fa-html5"></i>
+                    {% elif tech == 'CSS3' %}
+                        <i class="fab fa-css3-alt"></i>
+                    {% elif tech == 'JavaScript' %}
+                        <i class="fab fa-js-square"></i>
+                    {% elif tech == 'React' %}
+                        <i class="fab fa-react"></i>
+                    {% elif tech == 'Vue.js' %}
+                        <i class="fab fa-vuejs"></i>
+                    {% elif tech == 'Python' %}
+                        <i class="fab fa-python"></i>
+                    {% elif tech == 'Node.js' %}
+                        <i class="fab fa-node-js"></i>
+                    {% elif tech == 'Bootstrap' %}
+                        <i class="fab fa-bootstrap"></i>
+                    {% else %}
+                        <i class="fas fa-code"></i>
+                    {% endif %}
+                </div>
+                <h4>{{ tech }}</h4>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Key Features -->
+<section class="project-features">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Key Features</h2>
+            <p>Innovative features that make this project stand out</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h4>Responsive Design</h4>
+                <p>Optimized for all devices and screen sizes with fluid layouts and adaptive content.</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h4>Fast Performance</h4>
+                <p>Optimized code and assets ensure lightning-fast loading times and smooth interactions.</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h4>Modern UI/UX</h4>
+                <p>Contemporary design with intuitive user interface and engaging user experience.</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Secure & Reliable</h4>
+                <p>Built with security best practices and robust architecture for maximum reliability.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Navigation -->
+<section class="project-navigation">
+    <div class="container">
+        <div class="nav-grid">
+            {% if prev_project %}
+            <a href="{{ url_for('project_detail', project_id=prev_project.id) }}" class="nav-card prev-project" data-aos="fade-right">
+                <div class="nav-icon">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="nav-content">
+                    <span class="nav-label">Previous Project</span>
+                    <h4>{{ prev_project.title }}</h4>
+                </div>
+            </a>
+            {% endif %}
+            
+            <a href="{{ url_for('projects') }}" class="nav-card all-projects" data-aos="fade-up">
+                <div class="nav-icon">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <div class="nav-content">
+                    <span class="nav-label">View All</span>
+                    <h4>Projects</h4>
+                </div>
+            </a>
+            
+            {% if next_project %}
+            <a href="{{ url_for('project_detail', project_id=next_project.id) }}" class="nav-card next-project" data-aos="fade-left">
+                <div class="nav-content">
+                    <span class="nav-label">Next Project</span>
+                    <h4>{{ next_project.title }}</h4>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Project Hero */
+.project-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(3px) brightness(0.4);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(139, 92, 246, 0.8) 100%);
+}
+
+.breadcrumb {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: white;
+}
+
+.breadcrumb span {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0.5rem;
+}
+
+.project-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.project-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.project-meta-hero {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 500;
+}
+
+.meta-item i {
+    color: #fbbf24;
+}
+
+/* Project Overview */
+.project-overview {
+    padding: 5rem 0;
+    background: white;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.overview-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #6b7280;
+    margin-bottom: 3rem;
+}
+
+.project-highlights {
+    space-y: 2rem;
+}
+
+.highlight-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.highlight-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.highlight-content h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-content p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.overview-image {
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Technologies */
+.project-technologies {
+    padding: 5rem 0;
+    background: #f8fafc;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #6b7280;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tech-card {
+    background: white;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.tech-icon {
+    font-size: 3rem;
+    color: #6366f1;
+    margin-bottom: 1rem;
+}
+
+.tech-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Features */
+.project-features {
+    padding: 5rem 0;
+    background: white;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.feature-card h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.project-navigation {
+    padding: 3rem 0;
+    background: #f8fafc;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.nav-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.nav-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.next-project {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-title {
+        font-size: 2rem;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .project-meta-hero {
+        gap: 1rem;
+    }
+    
+    .nav-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-card {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .next-project {
+        flex-direction: row;
+        text-align: center;
+    }
+}
+</style>
+{% endblock %}

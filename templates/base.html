@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}Randeepa Ariyawansa - Professional Web Designer & Developer. Creating beautiful, functional websites and digital solutions.{% endblock %}">
+    <meta name="keywords" content="web designer, web developer, freelancer, portfolio, HTML, CSS, JavaScript, React, UI/UX">
+    <meta name="author" content="Randeepa Ariyawansa">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}{{ portfolio.personal_info.name }} - {{ portfolio.personal_info.title }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ portfolio.personal_info.bio }}{% endblock %}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/profile.jpg', _external=True) }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}{{ portfolio.personal_info.name }} - {{ portfolio.personal_info.title }}{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}{{ portfolio.personal_info.bio }}{% endblock %}">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/profile.jpg', _external=True) }}">
+    
+    <title>{% block title %}{{ portfolio.personal_info.name }} - {{ portfolio.personal_info.title }}{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="{{ url_for('home') }}">
+                    <span class="logo-text">{{ portfolio.personal_info.name.split()[0] }}</span>
+                    <span class="logo-accent">{{ portfolio.personal_info.name.split()[1] }}</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link smooth-scroll {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link smooth-scroll {% if request.endpoint == 'home' %}active{% endif %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link smooth-scroll {% if request.endpoint == 'home' %}active{% endif %}">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link smooth-scroll {% if request.endpoint == 'home' %}active{% endif %}">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link smooth-scroll {% if request.endpoint == 'home' %}active{% endif %}">Contact</a>
+                </li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=randeepaariyawansa324@gmail.com&su=Hire%20Request%20-%20Portfolio&body=Hello%20Randeepa,%0A%0AI%20am%20interested%20in%20hiring%20you%20for%20a%20project.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0AThank%20you!" target="_blank" class="btn btn-primary">Hire Me</a>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}" data-aos="fade-down">
+                        <span class="flash-content">{{ message }}</span>
+                        <button class="flash-close" onclick="this.parentElement.style.display='none'">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; {{ current_year }} {{ portfolio.personal_info.name }}. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="{{ url_for('about') }}">About</a>
+                    <a href="{{ url_for('projects') }}">Projects</a>
+                    <a href="{{ url_for('contact') }}">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

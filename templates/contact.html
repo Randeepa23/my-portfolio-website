@@ -1,0 +1,626 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - {{ data.personal_info.name }}{% endblock %}
+
+{% block content %}
+<!-- Contact Hero Section -->
+<section class="contact-hero">
+    <div class="contact-hero-background"></div>
+    <div class="container">
+        <div class="contact-hero-content" data-aos="fade-up">
+            <h1 class="contact-hero-title">Let's Work <span class="gradient-text">Together</span></h1>
+            <p class="contact-hero-subtitle">Ready to bring your ideas to life? I'm here to help you create something amazing.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-form-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info-card" data-aos="fade-right">
+                <div class="contact-info-header">
+                    <h2>Get In Touch</h2>
+                    <p>Let's discuss your project and how I can help you achieve your goals.</p>
+                </div>
+                
+                <div class="contact-info-items">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Email</h4>
+                            <p>{{ data.personal_info.email }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Phone</h4>
+                            <p>{{ data.personal_info.phone }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Location</h4>
+                            <p>{{ data.personal_info.location }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/Randeepa23" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/randeepa-ariyawansa-a589a6265/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/Ariyawansa61892" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/randeeeepa?igsh=MWk1NjBtazZ5ZWkxeA%3D%3D&utm_source=qr" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-card" data-aos="fade-left">
+                <div class="contact-form-header">
+                    <h2>Send Message</h2>
+                    <p>Fill out the form below and I'll get back to you within 24 hours.</p>
+                </div>
+                
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                <i class="fas fa-{% if category == 'success' %}check-circle{% else %}exclamation-triangle{% endif %}"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                
+                <form action="{{ url_for('contact') }}" method="POST" class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="Name">Full Name</label>
+                        <input type="text" id="Name" name="Name" placeholder="Enter your full name" required>
+                        <div class="form-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        <div class="form-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Message">Project Details</label>
+                        <textarea id="Message" name="Message" rows="6" placeholder="Tell me about your project, timeline, and requirements..." required></textarea>
+                        <div class="form-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                        <span class="btn-loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+                        <div class="btn-shine"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Services Section -->
+<section class="contact-services">
+    <div class="container">
+        <div class="contact-services-header" data-aos="fade-up">
+            <h2>How I Can Help</h2>
+            <p>Here are some of the services I offer to help bring your vision to life</p>
+        </div>
+        
+        <div class="contact-services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Custom websites and web applications built with modern technologies</p>
+            </div>
+            
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Responsive Design</h3>
+                <p>Mobile-first designs that work perfectly on all devices</p>
+            </div>
+            
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Performance Optimization</h3>
+                <p>Fast-loading websites optimized for the best user experience</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Contact Hero Section */
+.contact-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff05" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+    background-size: cover;
+}
+
+.contact-hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-hero-subtitle {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Contact Info Card */
+.contact-info-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.contact-info-header h2 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.contact-info-header p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-info-items {
+    margin-bottom: 2rem;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+    background: #f1f5f9;
+    transform: translateX(5px);
+}
+
+.contact-info-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.contact-info-content h4 {
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.contact-info-content p {
+    color: #64748b;
+    margin: 0;
+}
+
+.contact-social h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+/* Contact Form Card */
+.contact-form-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-header h2 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.contact-form-header p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+/* Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-icon {
+    position: absolute;
+    left: 1rem;
+    top: 2.25rem;
+    color: #9ca3af;
+    transition: color 0.3s ease;
+}
+
+.form-group input:focus + .form-icon,
+.form-group textarea:focus + .form-icon {
+    color: #6366f1;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    padding: 1.25rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.3);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-submit:hover .btn-shine {
+    left: 100%;
+}
+
+/* Contact Services Section */
+.contact-services {
+    padding: 80px 0;
+    background: white;
+}
+
+.contact-services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.contact-services-header h2 {
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.contact-services-header p {
+    color: #64748b;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: #f8fafc;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    background: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.service-card .service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.service-card h3 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.service-card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-hero {
+        padding: 80px 0 60px;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-info-card,
+    .contact-form-card {
+        padding: 2rem;
+    }
+    
+    .contact-services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .contact-hero-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-card,
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+    
+    .contact-services-header h2 {
+        font-size: 2rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+}
+</style>
+
+<script>
+// Contact form enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnIcon = submitBtn.querySelector('.btn-icon');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    form.addEventListener('submit', function(e) {
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.textContent = 'Sending...';
+        btnIcon.style.display = 'none';
+        btnLoading.style.display = 'inline-block';
+        submitBtn.style.opacity = '0.8';
+    });
+    
+    // Form validation enhancement
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '#22c55e';
+            }
+        });
+        
+        input.addEventListener('focus', function() {
+            this.style.borderColor = '#6366f1';
+        });
+    });
+    
+    // Add floating label effect
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const label = this.parentElement.querySelector('label');
+            if (this.value.trim() !== '') {
+                label.style.transform = 'translateY(-0.5rem) scale(0.9)';
+                label.style.color = '#6366f1';
+            } else {
+                label.style.transform = '';
+                label.style.color = '';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

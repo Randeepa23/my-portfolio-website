@@ -1,0 +1,900 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects - {{ data.personal_info.name }}{% endblock %}
+
+{% block content %}
+<!-- Projects Hero Section -->
+<section class="projects-hero">
+    <div class="projects-hero-background"></div>
+    <div class="container">
+        <div class="projects-hero-content" data-aos="fade-up">
+            <h1 class="projects-hero-title">My <span class="gradient-text">Projects</span></h1>
+            <p class="projects-hero-subtitle">Discover my latest works and creative solutions</p>
+            <div class="projects-stats">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <span class="stat-number">2+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Filter & Grid Section -->
+<section class="projects-section">
+    <div class="container">
+        <!-- Filter Buttons -->
+        <div class="projects-filter" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th"></i>
+                <span>All</span>
+            </button>
+            <button class="filter-btn" data-filter="web">
+                <i class="fas fa-code"></i>
+                <span>Web Development</span>
+            </button>
+            <button class="filter-btn" data-filter="mobile">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile Apps</span>
+            </button>
+            <button class="filter-btn" data-filter="design">
+                <i class="fas fa-paint-brush"></i>
+                <span>UI/UX Design</span>
+            </button>
+            <button class="filter-btn" data-filter="other">
+                <i class="fas fa-star"></i>
+                <span>Other</span>
+            </button>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1: DiGeCo Platform -->
+            <div class="project-card modern-card" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-image-container">
+                    <img src="{{ url_for('static', filename='images/digeco-1-1024x586.png') }}" alt="DiGeCo Platform" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-actions">
+                            <a href="{{ url_for('project_detail', project_id=1) }}" class="project-btn project-view-details">
+                                <i class="fas fa-eye"></i>
+                                <span>View Details</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-status">
+                        <span class="status-badge completed">Completed</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">DiGeCo Platform</h3>
+                        <div class="project-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">A comprehensive digital genetics collaboration platform designed for researchers to share data, collaborate on projects, and manage genetic research workflows efficiently.</p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team Collaboration</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-database"></i>
+                            <span>Data Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </div>
+                    </div>
+                    <div class="project-tech-stack">
+                        <span class="tech-tag react">React</span>
+                        <span class="tech-tag nodejs">Node.js</span>
+                        <span class="tech-tag mongodb">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2: ConnectMe -->
+            <div class="project-card modern-card" data-category="mobile" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-image-container">
+                    <img src="{{ url_for('static', filename='images/social media.jfif') }}" alt="ConnectMe Social App" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-actions">
+                            <a href="{{ url_for('project_detail', project_id=2) }}" class="project-btn project-view-details">
+                                <i class="fas fa-eye"></i>
+                                <span>View Details</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-status">
+                        <span class="status-badge in-progress">In Progress</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">ConnectMe</h3>
+                        <div class="project-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">A modern social media application with enhanced privacy features, real-time messaging, and intuitive user interface designed for seamless social connections.</p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Privacy First</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Real-time Chat</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile Optimized</span>
+                        </div>
+                    </div>
+                    <div class="project-tech-stack">
+                        <span class="tech-tag flutter">Flutter</span>
+                        <span class="tech-tag firebase">Firebase</span>
+                        <span class="tech-tag dart">Dart</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3: Modern Portfolio -->
+            <div class="project-card modern-card" data-category="design" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-image-container">
+                    <img src="{{ url_for('static', filename='images/portfolio1.jpg') }}" alt="Modern Portfolio Website" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-actions">
+                            <a href="{{ url_for('project_detail', project_id=3) }}" class="project-btn project-view-details">
+                                <i class="fas fa-eye"></i>
+                                <span>View Details</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-status">
+                        <span class="status-badge completed">Completed</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Modern Portfolio</h3>
+                        <div class="project-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="project-description">A responsive portfolio website featuring modern design principles, dark theme compatibility, smooth animations, and optimized performance for showcasing professional work.</p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Modern Design</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Fast Loading</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-moon"></i>
+                            <span>Dark Theme</span>
+                        </div>
+                    </div>
+                    <div class="project-tech-stack">
+                        <span class="tech-tag html">HTML5</span>
+                        <span class="tech-tag css">CSS3</span>
+                        <span class="tech-tag js">JavaScript</span>
+                        <span class="tech-tag flask">Flask</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+        <div class="gallery-header" data-aos="fade-up">
+            <h2 class="gallery-title">Project <span class="gradient-text">Gallery</span></h2>
+            <p class="gallery-subtitle">Visual showcases of my work</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="gallery-image-container">
+                    <img src="{{ url_for('static', filename='images/digeco-1-1024x586.png') }}" alt="DiGeCo Platform Dashboard">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>DiGeCo Platform</h4>
+                            <p>Dashboard Interface</p>
+                            <button class="gallery-view-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="gallery-image-container">
+                    <img src="{{ url_for('static', filename='images/social media.jfif') }}" alt="ConnectMe Mobile App UI">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>ConnectMe</h4>
+                            <p>Mobile App Interface</p>
+                            <button class="gallery-view-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="gallery-image-container">
+                    <img src="{{ url_for('static', filename='images/portfolio1.jpg') }}" alt="Portfolio Website Design">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Portfolio Design</h4>
+                            <p>Website Layout</p>
+                            <button class="gallery-view-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="gallery-image-container">
+                    <img src="{{ url_for('static', filename='images/download.jfif') }}" alt="UI Component Design">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>UI Components</h4>
+                            <p>Interface Elements</p>
+                            <button class="gallery-view-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="projects-cta">
+    <div class="container">
+        <div class="cta-content" data-aos="fade-up">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's work together to bring your ideas to life with cutting-edge technology and modern design.</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    <span>Start a Project</span>
+                </a>
+                <a href="{{ url_for('home') }}#about" class="btn btn-outline">
+                    <i class="fas fa-user"></i>
+                    <span>Learn More About Me</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Projects Hero Section */
+.projects-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff05" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+    background-size: cover;
+}
+
+.projects-hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.projects-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projects-hero-subtitle {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.projects-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.projects-stats .stat-item {
+    text-align: center;
+    color: white;
+}
+
+.projects-stats .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projects-stats .stat-label {
+    display: block;
+    font-size: 1rem;
+    color: #cbd5e1;
+    margin-top: 0.5rem;
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+/* Filter Buttons */
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    color: #64748b;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.filter-btn:hover {
+    border-color: #6366f1;
+    color: #6366f1;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Project Cards */
+.project-card.modern-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.project-card.modern-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.project-image-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card.modern-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card.modern-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.project-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.project-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.project-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.completed {
+    background: #10b981;
+    color: white;
+}
+
+.status-badge.in-progress {
+    background: #f59e0b;
+    color: white;
+}
+
+/* Project Content */
+.project-content {
+    padding: 2rem;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.project-rating {
+    color: #fbbf24;
+    font-size: 0.9rem;
+}
+
+.project-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.project-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+.feature-item i {
+    color: #6366f1;
+    font-size: 0.9rem;
+}
+
+/* Tech Stack */
+.project-tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.tech-tag.react { background: #61dafb; color: #000; }
+.tech-tag.nodejs { background: #339933; }
+.tech-tag.mongodb { background: #47a248; }
+.tech-tag.flutter { background: #02569b; }
+.tech-tag.firebase { background: #ffca28; color: #000; }
+.tech-tag.dart { background: #0175c2; }
+.tech-tag.html { background: #e34f26; }
+.tech-tag.css { background: #1572b6; }
+.tech-tag.js { background: #f7df1e; color: #000; }
+.tech-tag.flask { background: #000; }
+
+/* Gallery Section */
+.gallery-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.gallery-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.gallery-subtitle {
+    color: #64748b;
+    font-size: 1.2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.gallery-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image-container img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-content {
+    text-align: center;
+    color: white;
+}
+
+.gallery-content h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-content p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.gallery-view-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-view-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* CTA Section */
+.projects-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cta-buttons .btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+}
+
+.cta-buttons .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+}
+
+.cta-buttons .btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-buttons .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects-hero {
+        padding: 80px 0 60px;
+    }
+    
+    .projects-stats {
+        gap: 2rem;
+    }
+    
+    .projects-stats .stat-number {
+        font-size: 2rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-filter {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .gallery-title {
+        font-size: 2rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .project-features {
+        gap: 0.75rem;
+    }
+}
+</style>
+
+<script>
+// Enhanced project filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter projects with animation
+            const filter = button.getAttribute('data-filter');
+            projectCards.forEach((card, index) => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                        card.style.transition = 'all 0.3s ease';
+                    }, index * 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Gallery item click handlers
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Add your lightbox/modal functionality here
+            console.log('Gallery item clicked');
+        });
+    });
+});
+</script>
+{% endblock %}

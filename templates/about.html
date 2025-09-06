@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<section class="section about-section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Get to know me better</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/about-image.jpg') }}" alt="{{ personal_info.name }}" class="img-fluid" data-aos="fade-right">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <h3>Hello! I'm {{ personal_info.name }}</h3>
+                <p class="lead">{{ personal_info.bio }}</p>
+                <p>I specialize in crafting beautiful, functional websites and digital experiences that help businesses and individuals achieve their goals. With a passion for clean design and efficient code, I bring ideas to life through thoughtful and strategic development.</p>
+                <p>My approach combines technical expertise with creative problem-solving to deliver solutions that not only look great but also perform exceptionally well. I believe in continuous learning and staying updated with the latest industry trends and technologies.</p>
+                
+                <div class="about-info">
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">{{ personal_info.name }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">{{ personal_info.email }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">{{ personal_info.phone }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location:</span>
+                        <span class="info-value">{{ personal_info.location }}</span>
+                    </div>
+                </div>
+                
+                <div class="about-buttons">
+                    <a href="{{ url_for('static', filename='files/' + personal_info.cv_file) }}" download class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=randeepaariyawansa324@gmail.com&su=Hire%20Request%20-%20Portfolio&body=Hello%20Randeepa,%0A%0AI%20am%20interested%20in%20hiring%20you%20for%20a%20project.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0AThank%20you!" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Hire Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section skills-section bg-light" id="skills">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">What I'm good at</p>
+        </div>
+        
+        <div class="skills-content">
+            <div class="skills-text" data-aos="fade-right">
+                <h3>Professional Skills</h3>
+                <p>With years of experience in the digital field, I've developed a diverse set of skills that allow me to create comprehensive solutions for various project needs.</p>
+                <p>My technical expertise is complemented by strong problem-solving abilities, attention to detail, and a user-centered approach to design and development.</p>
+            </div>
+            
+            <div class="skills-bars" data-aos="fade-left">
+                {% for skill in skills %}
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <h4 class="skill-name">
+                            {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %} 
+                            {{ skill.name }}
+                        </h4>
+                        <span class="skill-percent">{{ skill.level }}%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-fill" data-width="{{ skill.level }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section experience-section" id="experience">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Experience & Education</h2>
+            <p class="section-subtitle">My professional journey</p>
+        </div>
+        
+        <div class="timeline-wrapper">
+            <div class="timeline-block">
+                <h3 class="timeline-title">Work Experience</h3>
+                
+                <div class="timeline">
+                    {% for job in experience %}
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">{{ job.period }}</div>
+                            <h4 class="timeline-heading">{{ job.title }} <span>at {{ job.company }}</span></h4>
+                            <p>{{ job.description }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="timeline-block">
+                <h3 class="timeline-title">Education</h3>
+                
+                <div class="timeline">
+                    {% for edu in education %}
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">{{ edu.period }}</div>
+                            <h4 class="timeline-heading">{{ edu.degree }} <span>at {{ edu.institution }}</span></h4>
+                            <p>{{ edu.description }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section stats-section bg-dark text-light">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="fade-up">
+                <div class="stat-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="stat-number" data-target="{{ stats.projects_completed }}">0</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <div class="stat-number" data-target="{{ stats.happy_clients }}">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-number" data-target="{{ stats.hours_worked }}">0</div>
+                <div class="stat-label">Hours Worked</div>
+            </div>
+            
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-number" data-target="{{ stats.satisfaction }}">0</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
